@@ -1,0 +1,20 @@
+{% extends "base_bootstrap.html" %}
+
+{% block content %}
+
+<h1>Datos del nuevo fabricante</h1>
+<form action="" method='post' style="margin-bottom:10px;">
+      {% csrf_token %}
+      <table>
+      {{ form.as_table }}
+      </table><p> </p>
+      <input type='submit' class="btn btn-primary" value='subir'>
+      <input type='submit' class="btn btn-primary" onclick="window.location='{% url 'autos:all' %}' ; return false;" value="Cancel">
+</form>
+  
+  {# generar el link de vuelta a la aplicacion de autos #}
+  <p><a href="{% url 'autos:all' %}">Galeria de Autos</a></p> 
+  {# generar link de vuelta a la main page #}
+  <p><a href="{% url 'homepage' %}"> Pag. principal</a></p> 
+
+{% endblock %}

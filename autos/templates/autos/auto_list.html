@@ -1,0 +1,53 @@
+{% extends "base_bootstrap.html" %}
+
+{% block content %}
+      <h1> Galeria de autos</h1>
+
+      <h3> Aplicación ejemplo del curso dj4e</h3>
+      {% if auto_list %}
+      <div class="tg-wrap"><table >
+            <thead>
+                  <tr>
+                    <th>Nombre</th>
+                    <th>Fabricante</th>
+                    <th>Comentrios generales</th>
+                    <th>Millas</th>
+                    <th>opciones</th>
+                  </tr>
+            </thead>
+            <tbody>
+            {% for auto in auto_list %}
+
+            <tr>
+                  <td>{{auto.nickname}}</td>
+                  <td>({{auto.make}})</td>
+                  <td>{{ auto.comments }}</td>
+                  <td>{{ auto.mileage }}</td>
+                  <td>( <a href="{% url 'autos:auto_update' auto.id %}">Actualizar</a>|<a href="{% url 'autos:auto_delete' auto.id %}">Eliminar</a>)</td>
+                </tr>
+        <!-- <li>
+              {{auto.nickname}} ({{auto.make}})
+              ( <a href="{% url 'autos:auto_update' auto.id %}">Actualizar</a> | 
+              <a href="{%url 'autos:auto_delete' auto.id%}"> Eliminar</a>) &nbsp; &nbsp;  ({{ auto.mileage }} millas).
+        </li> -->
+            {% endfor %}
+      </tbody>
+      </table></div>
+      {% else %}
+      <p> No hay carros en la lista, por favor:</p>
+      {% endif %}
+      <p>
+      {% if make_count > 0 %}
+           <a href="{% url 'autos:auto_create' %}">Agrega un Auto</a>
+      {% else %}
+           Por favor agrega un fabricante antes de agregar un auto     
+      {% endif %}
+      </p>
+      <p><a href="{% url 'autos:make_create' %}">Agregar un fabricante</a>&nbsp; &nbsp; &nbsp;
+         <a href="{% url 'autos:make_list' %}">Ver lista de fabricantes ({{ make_count }})</a></p> 
+      {% if user.is_authenticated %}
+            <p><a href="{% url 'logout' %}"> Log Out</a></p>
+      {% endif %}
+
+{% endblock %}
+</html>

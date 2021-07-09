@@ -1,0 +1,23 @@
+{% extends "base_bootstrap.html" %}
+
+{% block content %}
+{% if  'update' in request.path %}
+      <h2> Update cat information of {{ cat.nickname }}</h2>
+      <p> Please update the information below </p>
+{% else  %}
+      <h2> Register a cat</h2>
+      <p>New cat data</p>
+{% endif %}
+
+      <form action="" method="post">
+            {% csrf_token %}
+            <table>
+                  {{ form.as_table }}
+            </table>
+            <input type="submit" class="btn btn-primary" value="Save">
+            <input type="submit" onclick="window.location='{% url 'cats:all' %}' ; return false;" value="Cancel">
+      </form>
+
+
+
+{% endblock %}

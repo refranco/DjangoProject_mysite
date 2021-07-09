@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+      <title>Home mysite dj4e </title>
+</head>
+<body>
+      <h2>Grade part: 9978f8c4</h2>
+      <ul>
+            <li><p><a href="{% url 'polls:index' %}">A Polls Application</a></p></li>
+            <li><p><a href="{% url 'hello:hello' %}">Test the session</a></p>
+            <li>Try <a href="{% url 'autos:all' %}">Autos CRUD</a></li>
+            <li>Try <a href="{% url 'cats:all' %}">Cats CRUD</a></li>
+      </ul>
+            {% if user.is_authenticated %}
+            
+            <p><a href="{% url 'logout' %}"> Log out </a> </p>
+            {% else %}
+            <p> por favor <a href="{% url 'login' %}"> Log in</a> </p>
+            <p>If you need an account to log in, you can try:
+
+            <pre>Account: Estefranco </pre>
+            <pre>Password: admin.esteban</pre>
+                 
+                  </p>
+                  
+                  <h2>Hello World</h2>
+                  
+            {% endif %}
+</body>
+      
+</html>

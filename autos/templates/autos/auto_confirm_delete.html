@@ -1,0 +1,20 @@
+{% extends "base_bootstrap.html" %}
+
+{% block content %}
+
+<h1>Delete Auto</h1>
+
+<p>¿Are you sure you want to delete the auto?: <strong>{{ auto }} ({{ auto.make }})</strong></p>
+
+<form action="" method="POST" style='margin-bottom: 10px'>
+  {% csrf_token %}
+  <input type="submit" class="btn btn-primary" value="Si. Borrar">
+  <input type='submit' class="btn btn-primary" onclick="window.location='{% url 'autos:all' %}' ; return false;" value="Cancel">
+</form>
+
+{# generar el link de vuelta a la aplicacion de autos #}
+<p><a href="{% url 'autos:all' %}">Galeria de Autos</a></p> 
+{# generar link de vuelta a la main page #}
+<p></p><a href="{% url 'homepage' %}"> Pag. principal</a></p> 
+
+{% endblock %}

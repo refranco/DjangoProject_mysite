@@ -1,0 +1,27 @@
+{% extends "base_bootstrap.html" %}
+
+{% block content %}
+{# Mirar si hay una lista fabricantes #}
+ <h1> Galeria de Fabricantes</h1>
+
+{% if make_list %}
+      {# si la hay desplegar la lista #} 
+      <ul>
+            {% for make, make_num in mc_counts %}
+                  <li> {{ make.name }} ( {{ make_num }}) &nbsp; &nbsp;
+                        (<a href="{% url 'autos:make_update' make.id %}">Actualizar</a> |
+                         <a href="{% url 'autos:make_delete' make.id %}">Eliminar</a>)</li>
+            {% endfor %}
+
+      </ul>
+{% else %} 
+      <p> No hay fabricantes creados, por favor: </p>
+{% endif %}
+{# generar la opcion para agregar otro fabricante #}
+<p><a href="{% url 'autos:make_create' %}">Agregue un fabricante</a></p> 
+{# generar el link de vuelta a la aplicacion de autos #}
+<p><a href="{% url 'autos:all' %}">Galeria de Autos</a></p> 
+{# generar link de vuelta a la main page #}
+<p></p><a href="{% url 'homepage' %}"> Pag. principal</a></p> 
+
+{% endblock %}

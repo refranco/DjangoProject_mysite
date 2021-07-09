@@ -1,0 +1,27 @@
+{% extends "base_bootstrap.html" %}
+
+{% block content %}
+{# Mirar si hay una lista de razas #}
+ <h1> Breed List</h1>
+
+{% if breed_list %}
+      {# si la hay desplegar la lista #} 
+      <ul>
+            {% for breed, breed_num in breed_counts %}
+                  <li> {{ breed.name }} ( {{ breed_num }}) &nbsp; &nbsp;
+                        (<a href="{% url 'cats:breed_update' breed.id %}">Actualizar</a> |
+                         <a href="{% url 'cats:breed_delete' breed.id %}">Eliminar</a>)</li>
+            {% endfor %}
+
+      </ul>
+{% else %} 
+      <p> There is not a breed created, please first: </p>
+{% endif %}
+{# generar la opcion para agregar otra raza #}
+<p><a href="{% url 'cats:breed_create' %}">Add a breed</a></p> 
+{# generar el link de vuelta a la aplicacion de cats #}
+<p><a href="{% url 'cats:all' %}">Back to Cat list</a></p> 
+{# generar link de vuelta a la main page #}
+<p></p><a href="{% url 'homepage' %}"> Main page</a></p> 
+
+{% endblock %}

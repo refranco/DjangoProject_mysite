@@ -1,0 +1,16 @@
+{% extends "base_bootstrap.html" %}
+
+{% block content %}
+
+<h1>Registro de autos</h1>
+
+<form action="" method="post">
+{% csrf_token %}
+<table>
+      {{ form.as_table }}
+</table>
+      <input type='submit' class="btn btn-primary" value="guardar">
+      <input type='submit' class="btn btn-primary" onclick="window.location='{% url 'autos:all' %}' ; return false;" value="Cancelar">
+</form>
+
+{% endblock %}

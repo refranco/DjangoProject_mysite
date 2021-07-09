@@ -1,0 +1,17 @@
+{% extends "base_bootstrap.html" %}
+
+{% block content %}
+
+<h1> Eliminar fabricante</h1>
+      <p>¿Estas seguro de querer eliminar el siguiente fabricante?: <strong>{{ make }}</strong></p>
+
+      <form action="#" method="POST">
+            {% csrf_token %}
+            <input type='submit' class="btn btn-primary" value='Si, borrar'>
+            <input type='submit' class="btn btn-primary" onclick="window.location='{% url 'autos:all' %}' ; return false;" value="Cancel">
+      </form>
+{# generar el link de vuelta a la aplicacion de autos #}
+<p><a href="{% url 'autos:all' %}">Galeria de Autos</a></p> 
+{# generar link de vuelta a la main page #}
+<p></p><a href="{% url 'homepage' %}"> Pag. principal</a></p> 
+{% endblock %}
