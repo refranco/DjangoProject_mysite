@@ -1,16 +1,15 @@
 {% extends "base_bootstrap.html" %}
 
 {% block content %}
-{% if forms.errors %}
-    <p> Tu password y contraseña no coinciden, por favor vuelvalo a intentar</p>
+
+{% if form.errors %}
+  <p>Your username and password didn't match. Please try again.</p>
 {% endif %}
-<p> Por favor introduzca su usuario y contraseña </p>
-<form action="{% url 'login' %}" method="post">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <input type="submit" class="btn btn-primary" value="Login" />
-    <input type="hidden" name="next" value="{{ next }}" />
 
+<form method="post" action="{% url 'login' %}">
+{% csrf_token %}
+{{ form.as_p }}
+<input type="submit" class="btn btn-primary" value="Login" />
+<input type="hidden" name="next" value="{{ next }}" />
 </form>
-
 {% endblock %}

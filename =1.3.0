@@ -1,0 +1,9 @@
+Defaulting to user installation because normal site-packages is not writeable
+Collecting django-taggit
+  Using cached django_taggit-1.5.1-py3-none-any.whl (53 kB)
+Requirement already satisfied: Django>=2.2 in /home/esteban/.local/lib/python3.6/site-packages (from django-taggit) (3.1.4)
+Requirement already satisfied: pytz in /home/esteban/.local/lib/python3.6/site-packages (from Django>=2.2->django-taggit) (2020.5)
+Requirement already satisfied: sqlparse>=0.2.2 in /home/esteban/.local/lib/python3.6/site-packages (from Django>=2.2->django-taggit) (0.4.1)
+Requirement already satisfied: asgiref<4,>=3.2.10 in /home/esteban/.local/lib/python3.6/site-packages (from Django>=2.2->django-taggit) (3.3.1)
+Installing collected packages: django-taggit
+Successfully installed django-taggit-1.5.1

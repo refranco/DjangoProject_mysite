@@ -1,0 +1,9 @@
+Defaulting to user installation because normal site-packages is not writeable
+Collecting django-filter
+  Using cached django_filter-2.4.0-py3-none-any.whl (73 kB)
+Requirement already satisfied: Django>=2.2 in /home/esteban/.local/lib/python3.6/site-packages (from django-filter) (3.1.4)
+Requirement already satisfied: asgiref<4,>=3.2.10 in /home/esteban/.local/lib/python3.6/site-packages (from Django>=2.2->django-filter) (3.3.1)
+Requirement already satisfied: sqlparse>=0.2.2 in /home/esteban/.local/lib/python3.6/site-packages (from Django>=2.2->django-filter) (0.4.1)
+Requirement already satisfied: pytz in /home/esteban/.local/lib/python3.6/site-packages (from Django>=2.2->django-filter) (2020.5)
+Installing collected packages: django-filter
+Successfully installed django-filter-2.4.0
