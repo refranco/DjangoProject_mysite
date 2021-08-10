@@ -18,3 +18,16 @@ class HomeView(View):
             'islocal': islocal
         }
         return render(request, 'home/main.html', context)
+
+class EjemploView1(View):
+
+    def get(self,request):
+        context = {}
+        return render(request,'home/ejemplo1.html', context)
+
+
+class EjemploView2(View):
+
+    def get(self,request):
+        context = {}
+        return render(request,'home/ejemplo2.html', context)

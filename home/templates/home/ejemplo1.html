@@ -1,0 +1,30 @@
+{% extends 'base_menu.html' %}
+
+{% block title %} Ejemplo 1 javascript {% endblock %}
+
+{% block content %} 
+<p>One Paragraph, before first JavaScript example</p>
+<script type="text/javascript"> 
+  alert("Here I am");
+  document.write("<p>Codigo dentro de javascript al browser </p>")
+</script> 
+<noscript>
+Your browser doesn't support or has disabled JavaScript.
+</noscript>
+<p>Second Paragraph: second JavaScript Example
+<!-- Se esta generando un html imaginario llamado js-1.htm al sque iría la persona al dar en el boton Click me,
+     el return false; significa  que no siga el link, es decir, que vuelva a la pagina original -->
+<a href="js-1.htm" onclick="alert('Segundo ejemplo de alerta'); return false;">Click me</a></p>
+
+<h1> Sintax Errors</h1>
+<p>One Paragraph (between the first and second paragraph there is a javascript method that does not run because of a sintax error</p>
+<script type="text/javascript"> 
+  alert("I am broken');
+  alert("I am good");
+</script> 
+<p>Two Paragraph</p>
+<script type="text/javascript"> 
+  alert("Second time");
+</script> 
+<p>Three Paragraph</p>
+{% endblock %}

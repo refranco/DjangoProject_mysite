@@ -1,4 +1,4 @@
-{% extends "base_bootstrap.html" %}
+{% extends "base_menu.html" %}
 
 {% block content %}
 
@@ -6,10 +6,20 @@
   <p>Your username and password didn't match. Please try again.</p>
 {% endif %}
 
+{% load crispy_forms_tags %}
 <form method="post" action="{% url 'login' %}">
 {% csrf_token %}
-{{ form.as_p }}
+{{ form|crispy }}
 <input type="submit" class="btn btn-primary" value="Login" />
 <input type="hidden" name="next" value="{{ next }}" />
 </form>
+
+{% if settings.SOCIAL_AUTH_GITHUB_KEY %}
+<hr/>
+<a class="btn btn-info" role="button" href="{% url 'social:begin' 'github' %}?next={{ next }}">
+    <i class="fa fa-github" aria-hidden="true"></i>
+    Login with GitHub</a>
+{% endif %}
+
+<!-- ROOT_URLCONF {{ settings.ROOT_URLCONF }} -->
 {% endblock %}

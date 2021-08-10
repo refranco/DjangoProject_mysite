@@ -8,24 +8,38 @@
     </div>
     <!-- https://stackoverflow.com/questions/22047251/django-dynamically-get-view-url-and-check-if-its-the-current-page -->
     <ul class="nav navbar-nav">
-      {% url 'ads' as ads %}
+      {% url 'ads:all' as ads %}
       <li {% if request.get_full_path == ads %}class="active"{% endif %}>
           <a href="{% url 'ads:all' %}">Ads</a></li>
+      <li class="dropdown container-fluid" > 
+        <a href="#" data-toggle="dropdown" class="dropdown-toggle">Ejemplos</a>
+        <ul class="dropdown-menu  navbar-default navbar-inverse">
+          <li><a href="{% url 'home:ejemplo1' %}" style="color: gray;"> 1er ejemplos Javascript</a></li>
+          <li><a href="{% url 'home:ejemplo2' %}" style="color: gray;"> 2do ejemplo Console</a></li>
+        </ul>
+      </li>
     </ul>
     <ul class="nav navbar-nav navbar-right">
-        <li>
+        {% url 'autos:all' as autosall %}
+        <li {% if request.get_full_path == autosall %}class='active'{% endif %}>
         <a href="{% url 'autos:all' %}">Autos app</a>
-        </li>     
+        </li>
+        {% url 'cats:all' as catsall %}
+        <li {% if request.get_full_path == catsall %}class='active'{% endif %}>
+        <a href="{% url 'cats:all' %}">Cats app</a>
+        </li>             
         {% if user.is_authenticated %}
-        <li>
+        {% url 'ads:ad_create' as create_ad %}
+        <li {% if request.get_full_path == create_ad %}class='active'{% endif %}>
         <a href="{% url 'ads:ad_create' %}">Create Ad</a>
         </li>
-        <li class="dropdown">
+        <li class="dropdown container-fluid">
             <a href="#" data-toggle="dropdown" class="dropdown-toggle">
                 <img style="width: 25px;" src="{{ user|gravatar:60 }}"/><b class="caret"></b>
             </a>
-            <ul class="dropdown-menu">
-                <li><a href="{% url 'logout' %}?next={% url 'ads:all' %}">Logout</a></li>
+            <ul class="dropdown-menu  navbar-default navbar-inverse">
+                <li><a href="{% url 'logout' %}?next={% url 'ads:all' %}" style="color: gray;">Logout</a></li>
+                <li><a href="#" style="color: gray;">Profile</a></li>
             </ul>
         </li>
         {% else %}
